@@ -1,0 +1,56 @@
+
+enable
+conf t
+hostname R-SP
+banner motd "ACESSO RESTRITO,APENAS PESSOAL AUTORIZADO"
+enable secret P@ssw0rd
+username WILLYANE privilege 15 secret P@ssw0rd
+line console 0
+login local
+exit
+ip domain-name rede.local
+crypto key generate rsa general-key modulus 1024
+line vty 0 15
+transport input ssh
+login local 
+service password-encryption
+interface g0/0
+no shutdown
+interface g0/0.25
+encapsulation dot1q 25
+ipv6 address 2001:DB8:5F:25::64/64
+interface g0/0.50
+encapsulation dot1q 50
+ipv6 address 2001:DB8:5F:50::c8/64
+interface g0/0.75
+encapsulation dot1q 75
+ipv6 address 2001:DB8:5F:75::12c/64
+interface g0/0.90
+encapsulation dot1q 90
+ipv6 address 2001:DB8:5F:90::190/64
+interface g0/0.115
+encapsulation dot1q 115
+ipv6 address 2001:DB8:5F:115::258/64
+interface g0/0.140
+encapsulation dot1q 140
+ipv6 address 2001:DB8:5F:140::2bc/64
+interface s0/0/0
+ipv6 address 2001:DB8:CAFE:10::1/64
+no shutdown
+ipv6 unicast-routing
+ipv6 route 2001:DB8:6D0:25::/64 2001:DB8:CAFE:10::2
+ipv6 route 2001:DB8:6D0:50::/64 2001:DB8:CAFE:10::2
+ipv6 route 2001:DB8:6D0:75::/64 2001:DB8:CAFE:10::2
+ipv6 route 2001:DB8:6D0:90::/64 2001:DB8:CAFE:10::2
+ipv6 route 2001:DB8:6D0:115::/64 2001:DB8:CAFE:10::2
+ipv6 route 2001:DB8:6D0:140::/64 2001:DB8:CAFE:10::2
+ipv6 route 2001:DB8:B0B0:1::/64 2001:DB8:CAFE:10::2
+interface s0/0/1
+shutdown
+exit
+do wr
+
+
+
+
+

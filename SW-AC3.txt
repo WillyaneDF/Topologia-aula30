@@ -1,0 +1,24 @@
+enable
+conf t
+hostname SW-AC3
+vlan 115 
+name CONT
+vlan 140 
+name FIN
+interface fa0/1
+switchport mode access
+switchport access vlan 115
+interface fa0/10
+switchport mode access
+switchport access vlan 140
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 115,140
+interface range f0/2-9
+shutdown
+interface range f0/11-24
+shutdown
+interface g0/2
+shutdown
+do wr
+

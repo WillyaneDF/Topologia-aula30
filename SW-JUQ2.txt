@@ -1,0 +1,24 @@
+enable
+conf t
+hostname SW-JUQ2
+vlan 75 
+name TI
+vlan 90 
+name ADM
+interface fa0/1
+switchport mode access
+switchport access vlan 75
+interface fa0/10
+switchport mode access
+switchport access vlan 90
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 75,90
+interface range f0/2-9
+shutdown
+interface range f0/11-24
+shutdown
+interface g0/2
+shutdown
+do wr
+

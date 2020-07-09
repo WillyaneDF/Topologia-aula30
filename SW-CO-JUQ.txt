@@ -1,0 +1,30 @@
+enable
+conf t
+hostname SW-CO-JUQ
+vlan 25 
+name JUR
+vlan 50 
+name DIR
+vlan 75 
+name TI
+vlan 90 
+name ADM
+vlan 115 
+name CONT
+vlan 140 
+name FIN
+vlan 165 
+name SERVIDORES
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 25,50,75,90,115,140,165
+interface g1/1
+switchport mode trunk
+switchport trunk allowed vlan 25,50,75,90,115,140,165
+interface g2/1
+switchport mode trunk
+switchport trunk allowed vlan 25,50,75,90,115,140,165
+interface g3/1
+switchport mode trunk
+switchport trunk allowed vlan 25,50,75,90,115,140,165
+do wr 

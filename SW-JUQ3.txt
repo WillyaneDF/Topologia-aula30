@@ -1,0 +1,27 @@
+enable
+conf t
+hostname SW-JUQ3
+vlan 115 
+name CONT
+vlan 140 
+name FIN
+vlan 165
+name SERVIDORES
+interface fa0/1
+switchport mode access
+switchport access vlan 115
+interface fa0/10
+switchport mode access
+switchport access vlan 140
+interface g0/2
+switchport mode access
+switchport access vlan 165
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 115,140,165
+interface range f0/2-9
+shutdown
+interface range f0/11-24
+shutdown
+do wr
+
